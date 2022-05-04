@@ -7,16 +7,22 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'deprecate',
+    'import',
   ],
   extends: [
-    'react-app',
-    'plugin:react/recommended',
-    'airbnb',
-    'airbnb-typescript/base',
+    'airbnb-typescript',
+    'plugin:@typescript-eslint/recommended',
   ],
   rules: {
-    'no-use-before-define': 'off',
     'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
+    'linebreak-style': 0,
+    'import/prefer-default-export': 0,
+    'deprecate/rule-name': 0,
+    'deprecate/function': 1,
+    'deprecate/member-expression': 1,
+    'deprecate/import': 1,
+    'no-console': 1,
   },
   settings: {
     'import/resolver': {
