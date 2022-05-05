@@ -1,7 +1,7 @@
 export interface StarWarInterface {
   birth_year: string;
-  created: string;
-  edited: string;
+  created: Date;
+  edited: Date;
   eye_color: string;
   films: string[];
   gender: string;
