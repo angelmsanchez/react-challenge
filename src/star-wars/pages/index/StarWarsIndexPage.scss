@@ -1,0 +1,21 @@
+@import 'src/styles/_devices.scss';
+
+.star-wars-index-page {
+  padding: 1.5rem;
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+
+    @media screen and (min-width: $screen-xs) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    @media screen and (min-width: $screen-md) {
+      max-width: $screen-md;
+    }
+  }
+}

@@ -14,12 +14,15 @@ export function StarWarCard(props: Props): JSX.Element {
   const navigate = useNavigate();
 
   const goToDetail = (): void => {
-    navigate(`/star-wars/detail/${starWar.name}`);
+    navigate(`/star-wars/detail/${starWar.id}`);
   };
 
   return (
     <section className="star-war-card" onClick={goToDetail}>
-      {starWar.name}
+      <div>{starWar.name}</div>
+      <div>{starWar.hair_color}</div>
+      <p className="title">Contacts</p>
+      <p className="text">Add or change your contacts and links.</p>
     </section>
   );
 }

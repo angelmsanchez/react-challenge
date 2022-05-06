@@ -1,2 +1,14 @@
 ﻿// @import 'src/styles/_colors.scss';
-// @import 'src/styles/_devices.scss';
+header {
+  height: 150px;
+  width: 100%;
+  background-image: url('./../../../assets/images/background-header-2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 75%;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}

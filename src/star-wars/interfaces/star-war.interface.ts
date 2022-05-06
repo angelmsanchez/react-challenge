@@ -8,7 +8,7 @@ export interface StarWarInterface {
   hair_color: string;
   height: string;
   homeworld: string;
-  id: string;
+  id?: number;
   mass: string;
   name: string;
   skin_color: string;

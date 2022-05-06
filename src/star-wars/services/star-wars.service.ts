@@ -17,6 +17,11 @@ class StarWarsService {
     });
     return response.json();
   }
+
+  setIdByIndex(starWars: StarWarInterface[]): StarWarInterface[] {
+    return [...starWars.map((starWar, index) => { return { ...starWar, id: index + 1 }; })];
+  }
+
 }
 
 export const starWarsService = new StarWarsService();
