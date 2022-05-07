@@ -40,8 +40,10 @@ export function StarWarFilter(props: Props): JSX.Element {
   return (
     <section className="star-war-filter">
       <button onClick={sortByName} disabled={!originalStarWars}>
-        Sort by name
+        <span className="button-custom">
+          Sort by name
         {isSortAsc ? ' Ascendant' : ' Descendant'}
+        </span>
       </button>
       <div className="star-war-filter__select">
         <label>Filter by hair color</label>
@@ -59,10 +61,10 @@ export function StarWarFilter(props: Props): JSX.Element {
       </div>
       <div className="star-war-filter__default-button">
         <button onClick={() => {
-          
+
           handleSetDefault();
         }}>
-          Set Default
+          <span className="button-custom">Set Default</span>
         </button>
       </div>
     </section>

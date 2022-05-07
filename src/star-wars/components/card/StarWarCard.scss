@@ -1,53 +1,45 @@
 .star-war-card {
+  padding: 1rem;
+  margin: 0.5rem;
   width: 100%;
-  max-width: 300px;
+  max-width: 280px;
   min-width: 200px;
   height: 250px;
-  margin: 10px;
   border-radius: 10px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.24);
   border: 2px solid rgba(7, 7, 7, 0.12);
   font-size: 16px;
-  transition: all 0.3s ease;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   cursor: pointer;
   transition: all 0.3s ease;
 
-  .title {
-    width: 100%;
-    margin: 0;
-    text-align: center;
-    margin-top: 30px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 4px;
+  p {
+    width: 80%;
+    font-size: 13px;
+    margin-top: 0.8rem;
+    letter-spacing: 2px;
   }
 
-  .text {
-    width: 80%;
-    margin: 0 auto;
-    font-size: 13px;
+  &__name {
     text-align: center;
-    margin-top: 20px;
-    font-weight: 200;
-    letter-spacing: 2px;
+    margin: 1.5rem 0 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+
+  &__transition-container {
+    margin-top: auto;
+    transition: all 0.3s ease;
     opacity: 0;
     max-height: 0;
-    transition: all 0.3s ease;
   }
 
   &:hover {
-    height: 270px;
-
-    .info {
-      height: 90%;
-    }
-
-    .text {
+    .star-war-card__transition-container {
       transition: all 0.3s ease;
       opacity: 1;
       max-height: 40px;

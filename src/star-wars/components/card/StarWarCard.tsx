@@ -19,10 +19,11 @@ export function StarWarCard(props: Props): JSX.Element {
 
   return (
     <section className="star-war-card" onClick={goToDetail}>
-      <div>{starWar.name}</div>
-      <div>{starWar.hair_color}</div>
-      <p className="title">Contacts</p>
-      <p className="text">Add or change your contacts and links.</p>
+      <h6 className="star-war-card__name">{starWar.name}</h6>
+      <p><span>Hair Color:</span> {starWar.hair_color}</p>
+      <p><span>Gender:</span> {starWar.gender}</p>
+      <p><span>Height:</span> {starWar.height}</p>
+      <div className="star-war-card__transition-container">Go To Detail</div>
     </section>
   );
 }
