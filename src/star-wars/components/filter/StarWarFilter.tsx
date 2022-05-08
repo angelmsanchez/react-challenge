@@ -21,18 +21,24 @@ export function StarWarFilter(props: Props): JSX.Element {
   } = props;
 
   const [isSortAsc, setIsSortAsc] = useState(true);
+  const [hairColorSelected, setHairColorSelected] = useState('');
 
-  const sortByName = (): void => {
-    const sortableByName = filterStarWars?.sort((a, b) => isSortAsc
+  const sorteableFunction = (starWars: StarWarInterface[]): StarWarInterface[] => {
+    return starWars.sort((a, b) => isSortAsc
       ? a.name.localeCompare(b.name)
       : b.name.localeCompare(a.name));
+  };
+
+  const sortByName = (): void => {
     setIsSortAsc(!isSortAsc);
-    if (sortableByName) handleSortByTitle([...sortableByName]);
+    if (filterStarWars) handleSortByTitle([...sorteableFunction(filterStarWars)]);
   };
 
   const changeSelect = (event: ChangeEvent<HTMLSelectElement>): void => {
-    console.log('event', event.target.value);
-    const filterByHairColor = originalStarWars?.filter((starWar) => starWar.hair_color.includes(event.target.value));
+    const newValue = event.target.value;
+    setHairColorSelected(newValue);
+    let filterByHairColor = originalStarWars?.filter((starWar) => starWar.hair_color.includes(newValue));
+    if (filterByHairColor) filterByHairColor = [...sorteableFunction(filterByHairColor)];
     console.log('filterByHairColor', filterByHairColor);
     if (filterByHairColor) handleFilterColorHair([...filterByHairColor]);
   };
@@ -47,7 +53,7 @@ export function StarWarFilter(props: Props): JSX.Element {
       </button>
       <div className="star-war-filter__select">
         <label>Filter by hair color</label>
-        <select onChange={changeSelect}>
+        <select value={hairColorSelected} onChange={changeSelect}>
           <option value=""> - </option>
           <option value="auburn">Auburn</option>
           <option value="blond">Blond</option>
@@ -61,7 +67,8 @@ export function StarWarFilter(props: Props): JSX.Element {
       </div>
       <div className="star-war-filter__default-button">
         <button onClick={() => {
-
+          setIsSortAsc(true);
+          setHairColorSelected('');
           handleSetDefault();
         }}>
           <span className="button-custom">Set Default</span>

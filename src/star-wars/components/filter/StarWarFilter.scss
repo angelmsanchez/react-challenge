@@ -8,13 +8,32 @@
   @media screen and (min-width: $screen-sm) {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
   }
 
   &__select {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0 1rem 1rem;
+    margin: 1rem 0;
+    width: 220px;
+    letter-spacing: 2px;
+
+    @media screen and (min-width: $screen-sm) {
+      margin: 0 0 0 1.5rem;
+    }
+
+    select {
+      appearance: none;
+      background-color: transparent;
+      border-color: $color-primary;
+      border-width: 2px;
+      border-radius: 6px;
+      padding: 0.4rem;
+      width: 100%;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: inherit;
+      line-height: inherit;
+    }
   }
 
   &__default-button {
@@ -37,6 +56,10 @@
     width: 220px;
     z-index: 2;
     border-color: $color-light-grey;
+
+    @media screen and (min-width: $screen-sm) {
+      margin-top: 0.6rem;
+    }
 
     &:hover {
       color: #fff;

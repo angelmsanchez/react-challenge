@@ -3,12 +3,18 @@
 .star-wars-index-page {
   padding: 1.5rem;
 
+  h4 {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin-left: 1.5rem;
+  }
+
   &__cards {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 2rem auto 0;
-
+    max-width: $screen-sm;
 
     @media screen and (min-width: $screen-xs) {
       flex-direction: row;
@@ -17,6 +23,7 @@
 
     @media screen and (min-width: $screen-md) {
       max-width: $screen-md;
+      justify-content: space-between;
     }
   }
 }
