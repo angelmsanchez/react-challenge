@@ -1,7 +1,9 @@
 {
   "name": "react-challenge",
-  "version": "0.1.0",
+  "author": "angelmsanchez85@gmail.com",
+  "homepage": "https://react-challenge-ams.netlify.app/",
   "private": true,
+  "version": "0.1.0",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -43,12 +45,14 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie 11"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   }
 }

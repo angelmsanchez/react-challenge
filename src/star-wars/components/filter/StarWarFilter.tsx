@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from 'react';
 
 import './StarWarFilter.scss';
 import { StarWarInterface } from '../../interfaces';
+import { Button } from '../../../shared/components';
 
 interface Props {
   originalStarWars?: StarWarInterface[];
@@ -39,18 +40,20 @@ export function StarWarFilter(props: Props): JSX.Element {
     setHairColorSelected(newValue);
     let filterByHairColor = originalStarWars?.filter((starWar) => starWar.hair_color.includes(newValue));
     if (filterByHairColor) filterByHairColor = [...sorteableFunction(filterByHairColor)];
-    console.log('filterByHairColor', filterByHairColor);
     if (filterByHairColor) handleFilterColorHair([...filterByHairColor]);
   };
 
   return (
     <section className="star-war-filter">
-      <button onClick={sortByName} disabled={!originalStarWars}>
-        <span className="button-custom">
+      <Button
+        handleClick={sortByName}
+        disabled={!originalStarWars}
+      >
+        <>
           Sort by name
         {isSortAsc ? ' Ascendant' : ' Descendant'}
-        </span>
-      </button>
+        </>
+      </Button>
       <div className="star-war-filter__select">
         <label>Filter by hair color</label>
         <select value={hairColorSelected} onChange={changeSelect}>
@@ -66,13 +69,17 @@ export function StarWarFilter(props: Props): JSX.Element {
         </select>
       </div>
       <div className="star-war-filter__default-button">
-        <button onClick={() => {
-          setIsSortAsc(true);
-          setHairColorSelected('');
-          handleSetDefault();
-        }}>
-          <span className="button-custom">Set Default</span>
-        </button>
+        <Button
+          handleClick={() => {
+            setIsSortAsc(true);
+            setHairColorSelected('');
+            handleSetDefault();
+          }}
+        >
+          <>
+            Set Default
+          </>
+        </Button>
       </div>
     </section>
   );

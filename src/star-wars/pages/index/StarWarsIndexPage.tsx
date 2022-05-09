@@ -4,6 +4,7 @@ import './StarWarsIndexPage.scss';
 import { starWarsService } from '../../services';
 import { StarWarInterface } from '../../interfaces';
 import { StarWarCard, StarWarFilter } from '../../components';
+import { Spinner } from '../../../shared/components';
 
 export default function StarWarsIndexPage(): JSX.Element {
   const [originalStarWars, setOriginalStarWars] = useState<StarWarInterface[]>();
@@ -21,7 +22,6 @@ export default function StarWarsIndexPage(): JSX.Element {
   };
 
   const handleFilterStarWars = (starWars: StarWarInterface[]) => {
-    console.log('filterStarWars', starWars);
     setFilterStarWars(starWars);
   };
 
@@ -47,6 +47,7 @@ export default function StarWarsIndexPage(): JSX.Element {
           />
         ))}
       </div>
+      {!filterStarWars && (<Spinner />)}
     </section>
   );
 }

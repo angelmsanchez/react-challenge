@@ -3,12 +3,6 @@
 .star-wars-index-page {
   padding: 1.5rem;
 
-  h4 {
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-    margin-left: 1.5rem;
-  }
-
   &__cards {
     display: flex;
     flex-direction: column;

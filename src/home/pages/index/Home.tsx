@@ -1,11 +1,27 @@
 import React from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import './Home.scss';
+import { Button } from '../../../shared/components';
 
 export default function Home(): JSX.Element {
+  const navigate = useNavigate();
+
   return (
     <section className="home">
-      Home Page
+      <h4>Landing Page</h4>
+      <p>Welcome to Angel's challenge, this is a landing page!! </p>
+      <p>If you want to go to the list of star wars click on the following button</p>
+      <Button
+        handleClick={() => {
+          navigate('/star-wars');
+        }}
+      >
+        <>
+          Go List Star Wars
+        </>
+      </Button>
     </section>
   );
 }
