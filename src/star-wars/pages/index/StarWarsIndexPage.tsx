@@ -13,9 +13,8 @@ export default function StarWarsIndexPage(): JSX.Element {
   const getList = async () => {
     try {
       const response = await starWarsService.getPeople();
-      const responseWithId = starWarsService.setIdByIndex(response.results);
-      setOriginalStarWars(responseWithId);
-      setFilterStarWars(responseWithId);
+      setOriginalStarWars(response.results);
+      setFilterStarWars(response.results);
     } catch {
       // TODO show alert o some feature about error
     }
