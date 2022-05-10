@@ -32,15 +32,15 @@ export function StarWarFilter(props: Props): JSX.Element {
 
   const sortByName = (): void => {
     setIsSortAsc(!isSortAsc);
-    if (filterStarWars) handleSortByTitle([...sorteableFunction(filterStarWars)]);
+    if (filterStarWars && filterStarWars.length > 0) handleSortByTitle([...sorteableFunction(filterStarWars)]);
   };
 
   const changeSelect = (event: ChangeEvent<HTMLSelectElement>): void => {
     const newValue = event.target.value;
     setHairColorSelected(newValue);
     let filterByHairColor = originalStarWars?.filter((starWar) => starWar.hair_color.includes(newValue));
-    if (filterByHairColor) filterByHairColor = [...sorteableFunction(filterByHairColor)];
-    if (filterByHairColor) handleFilterColorHair([...filterByHairColor]);
+    if (filterByHairColor && filterByHairColor.length > 0) filterByHairColor = [...sorteableFunction(filterByHairColor)];
+    if (filterByHairColor && filterByHairColor.length > 0) handleFilterColorHair([...filterByHairColor]);
   };
 
   return (
@@ -54,7 +54,7 @@ export function StarWarFilter(props: Props): JSX.Element {
         {isSortAsc ? ' Ascendant' : ' Descendant'}
         </>
       </Button>
-      <div className="star-war-filter__select">
+      <div role="select-role" className="star-war-filter__select">
         <label>Filter by hair color</label>
         <select value={hairColorSelected} onChange={changeSelect}>
           <option value=""> - </option>
