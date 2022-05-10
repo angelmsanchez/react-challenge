@@ -7,7 +7,7 @@ import head from '../../../assets/images/head.png';
 
 export function Header(): JSX.Element {
   return (
-    <header>
+    <header role="header">
       <Link to="/">
         <img src={head} alt="Go to home" />
       </Link>
