@@ -3,16 +3,16 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 const HomePage = lazy(() => import('../../../home/pages/index/Home'));
-const StarWarsIndexPage = lazy(() => import('../../../star-wars/pages/index/StarWarsIndexPage'));
-const StarWarsDetailPage = lazy(() => import('../../../star-wars/pages/detail/StarWarsDetailPage'));
+const WarriorIndexPage = lazy(() => import('../../../warriors/pages/index/WarriorIndexPage'));
+const WarriorDetailPage = lazy(() => import('../../../warriors/pages/detail/WarriorDetailPage'));
 
 export function Router(): JSX.Element {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="/star-wars" element={<StarWarsIndexPage />} />
-        <Route path="/star-wars/detail/:idStarWar" element={<StarWarsDetailPage />} />
+        <Route path="/warriors" element={<WarriorIndexPage />} />
+        <Route path="/warriors/detail/:idWarrior" element={<WarriorDetailPage />} />
       </Routes>
     </Suspense>
   );

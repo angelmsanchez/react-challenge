@@ -1,4 +1,4 @@
-export interface StarWarInterface {
+export interface WarriorInterface {
   birth_year: string;
   created: Date;
   edited: Date;

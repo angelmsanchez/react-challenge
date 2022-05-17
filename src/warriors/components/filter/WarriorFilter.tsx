@@ -1,21 +1,21 @@
 import React, { useState, ChangeEvent } from 'react';
 
-import './StarWarFilter.scss';
-import { StarWarInterface } from '../../interfaces';
+import './WarriorFilter.scss';
+import { WarriorInterface } from '../../interfaces';
 import { Button } from '../../../shared/components';
 
 interface Props {
-  originalStarWars?: StarWarInterface[];
-  filterStarWars?: StarWarInterface[];
+  originalWarriors?: WarriorInterface[];
+  filterWarriors?: WarriorInterface[];
   handleSetDefault: () => void;
-  handleSortByTitle: (sortStarWars: StarWarInterface[]) => void;
-  handleFilterColorHair: (sortStarWars: StarWarInterface[]) => void;
+  handleSortByTitle: (sortWarriors: WarriorInterface[]) => void;
+  handleFilterColorHair: (sortWarriors: WarriorInterface[]) => void;
 }
 
-export function StarWarFilter(props: Props): JSX.Element {
+export function WarriorFilter(props: Props): JSX.Element {
   const {
-    originalStarWars,
-    filterStarWars,
+    originalWarriors,
+    filterWarriors,
     handleSetDefault,
     handleSortByTitle,
     handleFilterColorHair,
@@ -24,21 +24,21 @@ export function StarWarFilter(props: Props): JSX.Element {
   const [isSortAsc, setIsSortAsc] = useState(true);
   const [hairColorSelected, setHairColorSelected] = useState('');
 
-  const sorteableFunction = (starWars: StarWarInterface[]): StarWarInterface[] => {
-    return starWars.sort((a, b) => isSortAsc
+  const sorteableFunction = (Warriors: WarriorInterface[]): WarriorInterface[] => {
+    return Warriors.sort((a, b) => isSortAsc
       ? a.name.localeCompare(b.name)
       : b.name.localeCompare(a.name));
   };
 
   const sortByName = (): void => {
     setIsSortAsc(!isSortAsc);
-    if (filterStarWars && filterStarWars.length > 0) handleSortByTitle([...sorteableFunction(filterStarWars)]);
+    if (filterWarriors && filterWarriors.length > 0) handleSortByTitle([...sorteableFunction(filterWarriors)]);
   };
 
   const changeSelect = (event: ChangeEvent<HTMLSelectElement>): void => {
     const newValue = event.target.value;
     setHairColorSelected(newValue);
-    let filterByHairColor = originalStarWars?.filter((starWar) => starWar.hair_color.includes(newValue));
+    let filterByHairColor = originalWarriors?.filter((Warrior) => Warrior.hair_color.includes(newValue));
     if (filterByHairColor && filterByHairColor.length > 0) filterByHairColor = [...sorteableFunction(filterByHairColor)];
     if (filterByHairColor && filterByHairColor.length > 0) handleFilterColorHair([...filterByHairColor]);
   };
@@ -47,7 +47,7 @@ export function StarWarFilter(props: Props): JSX.Element {
     <section className="star-war-filter">
       <Button
         handleClick={sortByName}
-        disabled={!originalStarWars}
+        disabled={!originalWarriors}
       >
         <>
           Sort by name

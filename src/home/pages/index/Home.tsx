@@ -12,14 +12,14 @@ export default function Home(): JSX.Element {
     <section className="home">
       <h4>Landing Page</h4>
       <p>Welcome to Angel's challenge, this is a landing page!! </p>
-      <p>If you want to go to the list of star wars click on the following button</p>
+      <p>If you want to go to the list of Warriors click on the following button</p>
       <Button
         handleClick={() => {
-          navigate('/star-wars');
+          navigate('/warriors');
         }}
       >
         <>
-          Go List Star Wars
+          Go List Warriors
         </>
       </Button>
     </section>

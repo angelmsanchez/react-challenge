@@ -13,5 +13,5 @@ test('Header: renders component and test the class', () => {
 
   const header = screen.getByRole('header', { hidden: true });
 
-  expect(header).toHaveTextContent('Star Wars Page');
+  expect(header).toHaveTextContent('Warriors Page');
 });

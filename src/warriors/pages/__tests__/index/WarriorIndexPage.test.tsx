@@ -2,14 +2,13 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import StarWarsDetailPage from '../../detail/StarWarsDetailPage';
+import WarriorIndexPage from '../../index/WarriorIndexPage';
 
-test('StarWarsDetailPage: renders component and get the button title', () => {
-  const text = 'Go List Star Wars';
-
+test('WarriorsIndexPage: renders component and get the title of the page', () => {
+  const text = 'Warriors List';
   render(
     <BrowserRouter>
-      <StarWarsDetailPage />
+      <WarriorIndexPage />
     </BrowserRouter>,
   );
 

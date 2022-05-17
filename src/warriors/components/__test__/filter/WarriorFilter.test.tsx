@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { StarWarFilter } from '../../filter/StarWarFilter';
+import { WarriorFilter } from '../../filter/WarriorFilter';
 
-test('StarWarFilter: renders component and test the label`s buttons', () => {
+test('WarriorFilter: renders component and test the label`s buttons', () => {
   render(
-    <StarWarFilter
+    <WarriorFilter
       handleSetDefault={() => { }}
       handleSortByTitle={() => { }}
       handleFilterColorHair={() => { }}
@@ -18,9 +18,9 @@ test('StarWarFilter: renders component and test the label`s buttons', () => {
   expect(element[1]).toHaveTextContent('Set Default');
 });
 
-test('StarWarFilter: renders component and test the select component', () => {
+test('WarriorFilter: renders component and test the select component', () => {
   render(
-    <StarWarFilter
+    <WarriorFilter
       handleSetDefault={() => { }}
       handleSortByTitle={() => { }}
       handleFilterColorHair={() => { }}

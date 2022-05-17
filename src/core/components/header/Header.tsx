@@ -11,7 +11,7 @@ export function Header(): JSX.Element {
       <Link to="/">
         <img src={head} alt="Go to home" />
       </Link>
-      <Link to="/star-wars">Star Wars Page</Link>
+      <Link to="/warriors">Warriors Page</Link>
     </header>
   );
 }
