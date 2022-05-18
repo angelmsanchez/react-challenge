@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import './WarriorDetailPage.scss';
-import { warriorsService } from '../../services';
 import { WarriorInterface } from '../../interfaces';
 import { Button, Spinner } from '../../../shared/components';
+import { warriorsService } from '../../services/warriors.service';
 
 export default function WarriorDetailPage(): JSX.Element {
   const params = useParams();

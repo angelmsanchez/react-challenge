@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import './WarriorIndexPage.scss';
-import { warriorsService } from '../../services';
+import { warriorsService } from '../../services/warriors.service';
 import { WarriorInterface } from '../../interfaces';
 import { WarriorCard, WarriorFilter } from '../../components';
 import { Spinner } from '../../../shared/components';
