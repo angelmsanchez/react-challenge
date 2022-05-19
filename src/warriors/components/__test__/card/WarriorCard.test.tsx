@@ -6,18 +6,18 @@ import { WarriorCard } from '../../card/WarriorCard';
 import { WarriorInterface } from '../../../interfaces';
 
 test('WarriorCard: renders component and get the name of Warrior', () => {
-  const Warrior = {
+  const warrior = {
     name: 'Yoda',
   } as WarriorInterface;
 
   render(
     <BrowserRouter>
-      <WarriorCard Warrior={Warrior} />
+      <WarriorCard warrior={warrior} />
     </BrowserRouter>,
   );
 
-  const element = screen.getByText(Warrior.name);
+  const element = screen.getByText(warrior.name);
   expect(element).toBeInTheDocument();
-  expect(element).toHaveTextContent(Warrior.name);
-  expect(element).toHaveClass('star-war-card__name');
+  expect(element).toHaveTextContent(warrior.name);
+  expect(element).toHaveClass('warrior-card__name');
 });

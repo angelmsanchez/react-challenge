@@ -5,7 +5,7 @@ import './Button.scss';
 interface Props {
   children: JSX.Element;
   disabled?: boolean;
-  handleClick: () => void;
+  handleClick?: () => void;
 }
 
 export function Button(props: Props): JSX.Element {

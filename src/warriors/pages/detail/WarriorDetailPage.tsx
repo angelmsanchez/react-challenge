@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './WarriorDetailPage.scss';
 import { WarriorInterface } from '../../interfaces';
@@ -9,8 +10,7 @@ import { warriorsService } from '../../services/warriors.service';
 
 export default function WarriorDetailPage(): JSX.Element {
   const params = useParams();
-  const navigate = useNavigate();
-  const [Warrior, setWarrior] = useState<WarriorInterface>();
+  const [warrior, setWarrior] = useState<WarriorInterface>();
 
   const getDetail = async () => {
     try {
@@ -27,28 +27,26 @@ export default function WarriorDetailPage(): JSX.Element {
 
   return (
     <section className="warriors-detail-page">
-      <Button
-        handleClick={() => {
-          navigate('/warriors');
-        }}
-      >
-        <>
-          Go List Warriors
+      <Link to="/warriors">
+        <Button      >
+          <>
+            Go List Warriors
         </>
-      </Button>
-      {Warrior && (
+        </Button>
+      </Link>
+      {warrior && (
         <div className="warriors-detail-page__data">
-          <p><span>Name:</span> {Warrior.name}</p>
-          <p><span>Hair Color:</span> {Warrior.hair_color}</p>
-          <p><span>Eye Color:</span> {Warrior.eye_color}</p>
-          <p><span>Skin Color:</span> {Warrior.skin_color}</p>
-          <p><span>Gender:</span> {Warrior.gender}</p>
-          <p><span>Height:</span> {Warrior.height}</p>
-          <p><span>Mass:</span> {Warrior.mass}</p>
-          <p><span>Birth Year:</span> {Warrior.birth_year}</p>
+          <p><span>Name:</span> {warrior.name}</p>
+          <p><span>Hair Color:</span> {warrior.hair_color}</p>
+          <p><span>Eye Color:</span> {warrior.eye_color}</p>
+          <p><span>Skin Color:</span> {warrior.skin_color}</p>
+          <p><span>Gender:</span> {warrior.gender}</p>
+          <p><span>Height:</span> {warrior.height}</p>
+          <p><span>Mass:</span> {warrior.mass}</p>
+          <p><span>Birth Year:</span> {warrior.birth_year}</p>
         </div>
       )}
-      {!Warrior && (<Spinner />)}
+      {!warrior && (<Spinner />)}
     </section>
   );
 }

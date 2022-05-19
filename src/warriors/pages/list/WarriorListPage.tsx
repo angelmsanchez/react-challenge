@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import './WarriorIndexPage.scss';
+import './WarriorListPage.scss';
 import { warriorsService } from '../../services/warriors.service';
 import { WarriorInterface } from '../../interfaces';
 import { WarriorCard, WarriorFilter } from '../../components';
 import { Spinner } from '../../../shared/components';
 
-export default function WarriorIndexPage(): JSX.Element {
+export default function WarriorListPage(): JSX.Element {
   const [originalWarriors, setOriginalWarriors] = useState<WarriorInterface[]>();
   const [filterWarriors, setFilterWarriors] = useState<WarriorInterface[]>();
 
@@ -39,10 +39,10 @@ export default function WarriorIndexPage(): JSX.Element {
         handleFilterColorHair={handleFilterWarriors}
       />
       <div className="warriors-index-page__cards">
-        {filterWarriors && filterWarriors.length > 0 && filterWarriors.map((Warrior) => (
+        {filterWarriors && filterWarriors.length > 0 && filterWarriors.map((warrior) => (
           <WarriorCard
-            key={Warrior.name}
-            Warrior={Warrior}
+            key={warrior.name}
+            warrior={warrior}
           />
         ))}
       </div>

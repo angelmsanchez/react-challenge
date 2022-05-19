@@ -44,7 +44,7 @@ export function WarriorFilter(props: Props): JSX.Element {
   };
 
   return (
-    <section className="star-war-filter">
+    <section className="warrior-filter">
       <Button
         handleClick={sortByName}
         disabled={!originalWarriors}
@@ -54,7 +54,7 @@ export function WarriorFilter(props: Props): JSX.Element {
         {isSortAsc ? ' Ascendant' : ' Descendant'}
         </>
       </Button>
-      <div role="select-role" className="star-war-filter__select">
+      <div role="select-role" className="warrior-filter__select">
         <label>Filter by hair color</label>
         <select value={hairColorSelected} onChange={changeSelect}>
           <option value=""> - </option>
@@ -68,7 +68,7 @@ export function WarriorFilter(props: Props): JSX.Element {
           <option value="none">None</option>
         </select>
       </div>
-      <div className="star-war-filter__default-button">
+      <div className="warrior-filter__default-button">
         <Button
           handleClick={() => {
             setIsSortAsc(true);

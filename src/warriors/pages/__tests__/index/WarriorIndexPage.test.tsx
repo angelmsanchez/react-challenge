@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import WarriorIndexPage from '../../index/WarriorIndexPage';
+import WarriorIndexPage from '../../list/WarriorListPage';
 
 test('WarriorsIndexPage: renders component and get the title of the page', () => {
   const text = 'Warriors List';
