@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import './WarriorCard.scss';
 import { WarriorInterface } from '../../interfaces';
+import swordLaser from '../../../assets/images/espada-laser.png';
 
-const LinkStyleComponent = styled.div`
+const LinkCustom = styled(Link)`
   padding: 1rem;
   margin: 1rem 0.5rem;
   width: 100%;
@@ -27,7 +27,33 @@ const LinkStyleComponent = styled.div`
   &:hover {
     box-shadow: 0px 2px 10px rgba(9, 114, 208, 0.24);
     border-color: rgba(9, 114, 208, 0.24);
-    cursor: url('../../../assets/images/espada-laser.png'), auto;
+    cursor: url(${swordLaser}), auto;
+  }
+`;
+
+const Title = styled.h6`
+  text-align: center;
+  margin: 1.5rem 0 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 1rem;
+`;
+
+const Container = styled.div`
+  margin-top: auto;
+  transition: all 0.3s ease;
+  // opacity: 0;
+  max-height: 0;
+  margin-bottom: 0.5rem;
+  // color: $color-primary;
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  &:hover {
+    transition: all 0.3s ease;
+    opacity: 1;
+    max-height: 40px;
   }
 `;
 
@@ -39,14 +65,12 @@ export function WarriorCard(props: Props): JSX.Element {
   const { warrior } = props;
 
   return (
-    <Link className="warrior-card" to={`/warriors/detail/${warrior.id}`}>
-      <LinkStyleComponent>
-        <h6 className="warrior-card__name">{warrior.name}</h6>
-        <p><span>Hair Color:</span> {warrior.hair_color}</p>
-        <p><span>Gender:</span> {warrior.gender}</p>
-        <p><span>Height:</span> {warrior.height}</p>
-        <div className="warrior-card__transition-container">Go To Detail</div>
-      </LinkStyleComponent>
-    </Link>
+    <LinkCustom to={`/warriors/detail/${warrior.id}`}>
+      <Title>{warrior.name}</Title>
+      <p><span>Hair Color:</span> {warrior.hair_color}</p>
+      <p><span>Gender:</span> {warrior.gender}</p>
+      <p><span>Height:</span> {warrior.height}</p>
+      <Container>Go To Detail</Container>
+    </LinkCustom>
   );
 }
