@@ -43,17 +43,15 @@ const Title = styled.h6`
 const Container = styled.div`
   margin-top: auto;
   transition: all 0.3s ease;
-  // opacity: 0;
-  max-height: 0;
   margin-bottom: 0.5rem;
-  // color: $color-primary;
+  color: #0972d0;
+  opacity: 0;
   font-size: 1.1rem;
   font-weight: 600;
 
   &:hover {
     transition: all 0.3s ease;
     opacity: 1;
-    max-height: 40px;
   }
 `;
 
