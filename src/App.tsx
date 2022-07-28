@@ -14,6 +14,11 @@ const theme = {
   pink: '#E9657B',
   pinkLight: '#ff5a60',
   secondary: '#86d472',
+  screenXs: '(min-width: 480px)',
+  screenSm: '(min-width: 768px)',
+  screenMd: '(min-width: 1024px)',
+  screenLg: '(min-width: 1366px)',
+  screenXlg: '(min-width: 1920px)',
 };
 
 function App() {

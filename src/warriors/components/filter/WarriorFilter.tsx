@@ -1,8 +1,51 @@
 import React, { useState, ChangeEvent } from 'react';
 
-import './WarriorFilter.scss';
+import styled from 'styled-components';
+
 import { WarriorInterface } from '../../interfaces';
 import { Button } from '../../../shared/components';
+
+const WarriorContainer = styled.div`
+  max-width: 1024px;
+  margin: 0 auto;
+
+  @media ${props => props.theme.screenMd} {
+    display: flex;
+    flex-wrap: wrap;
+  }
+`;
+
+const SelectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  width: 220px;
+  letter-spacing: 2px;
+
+  @media ${props => props.theme.screenMd} {
+    margin: 0 0 0 1.5rem;
+  }
+
+  select {
+    appearance: none;
+    background-color: transparent;
+    border-color: ${props => props.theme.main};
+    border-width: 2px;
+    border-radius: 6px;
+    padding: 0.4rem;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  @media ${props => props.theme.screenMd} {
+    margin-left: auto;
+  }
+`;
 
 interface Props {
   originalWarriors?: WarriorInterface[];
@@ -24,7 +67,7 @@ export function WarriorFilter(props: Props): JSX.Element {
   const [isSortAsc, setIsSortAsc] = useState(true);
   const [hairColorSelected, setHairColorSelected] = useState('');
 
-  const sorteableFunction = (Warriors: WarriorInterface[]): WarriorInterface[] => {
+  const sortableFunction = (Warriors: WarriorInterface[]): WarriorInterface[] => {
     return Warriors.sort((a, b) => isSortAsc
       ? a.name.localeCompare(b.name)
       : b.name.localeCompare(a.name));
@@ -32,29 +75,29 @@ export function WarriorFilter(props: Props): JSX.Element {
 
   const sortByName = (): void => {
     setIsSortAsc(!isSortAsc);
-    if (filterWarriors && filterWarriors.length > 0) handleSortByTitle([...sorteableFunction(filterWarriors)]);
+    if (filterWarriors && filterWarriors.length > 0) handleSortByTitle([...sortableFunction(filterWarriors)]);
   };
 
   const changeSelect = (event: ChangeEvent<HTMLSelectElement>): void => {
     const newValue = event.target.value;
     setHairColorSelected(newValue);
     let filterByHairColor = originalWarriors?.filter((Warrior) => Warrior.hair_color.includes(newValue));
-    if (filterByHairColor && filterByHairColor.length > 0) filterByHairColor = [...sorteableFunction(filterByHairColor)];
+    if (filterByHairColor && filterByHairColor.length > 0) filterByHairColor = [...sortableFunction(filterByHairColor)];
     if (filterByHairColor && filterByHairColor.length > 0) handleFilterColorHair([...filterByHairColor]);
   };
 
   return (
-    <section className="warrior-filter">
+    <WarriorContainer>
       <Button
         handleClick={sortByName}
         disabled={!originalWarriors}
       >
         <>
           Sort by name
-        {isSortAsc ? ' Ascendant' : ' Descendant'}
+          {isSortAsc ? ' Ascendant' : ' Descendant'}
         </>
       </Button>
-      <div role="select-role" className="warrior-filter__select">
+      <SelectContainer role="select-role" className="warrior-filter__select">
         <label>Filter by hair color</label>
         <select value={hairColorSelected} onChange={changeSelect}>
           <option value=""> - </option>
@@ -67,8 +110,8 @@ export function WarriorFilter(props: Props): JSX.Element {
           <option value="n/a">n/a</option>
           <option value="none">None</option>
         </select>
-      </div>
-      <div className="warrior-filter__default-button">
+      </SelectContainer>
+      <ButtonContainer>
         <Button
           handleClick={() => {
             setIsSortAsc(true);
@@ -80,7 +123,7 @@ export function WarriorFilter(props: Props): JSX.Element {
             Set Default
           </>
         </Button>
-      </div>
-    </section>
+      </ButtonContainer>
+    </WarriorContainer>
   );
 }
