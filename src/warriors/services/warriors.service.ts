@@ -4,8 +4,8 @@ import { PageResponseInterface } from '../../shared/interfaces';
 class WarriorsService {
   url = 'https://swapi.dev/api/';
 
-  async getPeople(): Promise<PageResponseInterface<WarriorInterface>> {
-    const response = await this.requestFetch<PageResponseInterface<WarriorInterface>>(`${this.url}people/`);
+  async getPeople(nextUrl?: string): Promise<PageResponseInterface<WarriorInterface>> {
+    const response = await this.requestFetch<PageResponseInterface<WarriorInterface>>(nextUrl || `${this.url}people/`);
     return {
       ...response,
       results: this.setIdByIndex(response.results),

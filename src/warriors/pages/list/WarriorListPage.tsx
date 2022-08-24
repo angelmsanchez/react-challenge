@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import './WarriorListPage.scss';
 import { warriorsService } from '../../services';
 import { WarriorInterface } from '../../interfaces';
 import { WarriorCard, WarriorFilter } from '../../components';
@@ -32,17 +33,20 @@ const CardsContainer = styled.div`
 `;
 
 export default function WarriorListPage(): JSX.Element {
-  const [filterWarriors, setFilterWarriors] = useState<WarriorInterface[]>();
+  const [filterWarriors, setFilterWarriors] = useState<WarriorInterface[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [pageResponse, setPageResponse] = useState<PageResponseInterface<WarriorInterface>>();
+  const [hasMorePages, setHasMorePages] = useState(true);
 
-  const getList = async () => {
-    setIsLoading(true);
+  const getList = async (nextUrl?: string) => {
     try {
-      const response = await warriorsService.getPeople();
+      const response = await warriorsService.getPeople(nextUrl);
       setPageResponse(response);
+      setFilterWarriors([
+        ...filterWarriors,
+        ...response.results,
+      ]);
       setIsLoading(false);
-      setFilterWarriors(response.results);
     } catch {
       // TODO show alert o some feature about error
       setIsLoading(false);
@@ -54,11 +58,12 @@ export default function WarriorListPage(): JSX.Element {
   };
 
   const handleNextWarriors = () => {
-    console.log('handleNextWarriors');
-    getList();
+    if (pageResponse?.next) getList(pageResponse?.next);
+    else setHasMorePages(false);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getList();
   }, []);
 
@@ -76,10 +81,10 @@ export default function WarriorListPage(): JSX.Element {
           />
           <CardsContainer>
             <InfiniteScroll
-              dataLength={pageResponse?.count}
+              dataLength={filterWarriors.length}
               next={handleNextWarriors}
-              hasMore={true}
-              loader={<h4>Loading...</h4>}
+              hasMore={hasMorePages}
+              loader={<div className="loader-infinite-scroll">Loading...</div>}
               style={{ width: '100%' }}
             >
               {filterWarriors && filterWarriors.length > 0 && filterWarriors.map((warrior) => (

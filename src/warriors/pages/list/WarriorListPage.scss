@@ -1,0 +1,16 @@
+.infinite-scroll-component__outerdiv {
+  width: 100%;
+
+  .infinite-scroll-component {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .loader-infinite-scroll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
