@@ -3,6 +3,7 @@ import React, { Profiler } from 'react';
 
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { Router, Header } from './core/components';
 
@@ -21,6 +22,9 @@ const theme = {
   screenXlg: '(min-width: 1920px)',
 };
 
+const queryClient = new QueryClient();
+
+
 function App() {
   const onRenderCallback = (
     id: string,
@@ -33,14 +37,17 @@ function App() {
   ) => { };
 
   return (
-    <Profiler id="profilerApp" onRender={onRenderCallback}>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Header />
-          <Router />
-        </BrowserRouter>
-      </ThemeProvider>
-    </Profiler>
+    <QueryClientProvider client={queryClient}>
+      <Profiler id="profilerApp" onRender={onRenderCallback}>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <Header />
+            <Router />
+          </BrowserRouter>
+        </ThemeProvider>
+      </Profiler>
+    </QueryClientProvider>
+
   );
 }
 

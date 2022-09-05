@@ -13,6 +13,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.2.3",
     "react": "^18.1.0",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^18.1.0",

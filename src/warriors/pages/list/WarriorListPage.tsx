@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useQuery } from '@tanstack/react-query';
 
 import './WarriorListPage.scss';
 import { warriorsService } from '../../services';
@@ -34,23 +35,16 @@ const CardsContainer = styled.div`
 
 export default function WarriorListPage(): JSX.Element {
   const [filterWarriors, setFilterWarriors] = useState<WarriorInterface[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [pageResponse, setPageResponse] = useState<PageResponseInterface<WarriorInterface>>();
   const [hasMorePages, setHasMorePages] = useState(true);
+  const { isLoading, data, refetch } = useQuery(['people'], () =>
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    getList(pageResponse?.next),
+  );
 
   const getList = async (nextUrl?: string) => {
-    try {
-      const response = await warriorsService.getPeople(nextUrl);
-      setPageResponse(response);
-      setFilterWarriors([
-        ...filterWarriors,
-        ...response.results,
-      ]);
-      setIsLoading(false);
-    } catch {
-      // TODO show alert o some feature about error
-      setIsLoading(false);
-    }
+    const response = await warriorsService.getPeople(nextUrl);
+    return response;
   };
 
   const handleFilterWarriors = (warriors: WarriorInterface[]) => {
@@ -58,14 +52,19 @@ export default function WarriorListPage(): JSX.Element {
   };
 
   const handleNextWarriors = () => {
-    if (pageResponse?.next) getList(pageResponse?.next);
+    if (pageResponse?.next) refetch();
     else setHasMorePages(false);
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    getList();
-  }, []);
+    if (data) {
+      setPageResponse(data);
+      setFilterWarriors([
+        ...filterWarriors,
+        ...data.results,
+      ]);
+    }
+  }, [data, isLoading]);
 
   return (
     <PageContainer>
