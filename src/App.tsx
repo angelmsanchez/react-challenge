@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { Profiler } from 'react';
+import React, { Profiler, useEffect } from 'react';
 
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { Router, Header } from './core/components';
+import { InterceptorService } from './shared/services';
 
 const theme = {
   grey: '#666666',
@@ -35,6 +36,10 @@ function App() {
     commitTime: unknown,
     interactions: unknown,
   ) => { };
+
+  useEffect(() => {
+    InterceptorService();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
