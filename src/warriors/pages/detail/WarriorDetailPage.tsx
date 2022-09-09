@@ -5,12 +5,11 @@ import styled from 'styled-components';
 
 import { WarriorInterface } from '../../interfaces';
 import { Button, Spinner } from '../../../shared/components';
-import { warriorsService } from '../../services/warriors.service';
+import { useGet } from '../../../shared/services';
 
 const PageContainer = styled.div`
   padding: 1.5rem;
 `;
-
 const DataContainer = styled.div`
   margin-top: 2rem;
 `;
@@ -18,19 +17,14 @@ const DataContainer = styled.div`
 export default function WarriorDetailPage(): JSX.Element {
   const params = useParams();
   const [warrior, setWarrior] = useState<WarriorInterface>();
-
-  const getDetail = async () => {
-    try {
-      const response = await warriorsService.getDetailPeople(params.idWarrior);
-      setWarrior(response);
-    } catch {
-      // TODO show alert o some feature about error
-    }
-  };
+  const { data } = useGet<WarriorInterface>(`people/${params.idWarrior}`);
 
   useEffect(() => {
-    getDetail();
-  }, []);
+    if (data) {
+      setWarrior(data);
+    }
+  }, [data]);
+
 
   return (
     <PageContainer>

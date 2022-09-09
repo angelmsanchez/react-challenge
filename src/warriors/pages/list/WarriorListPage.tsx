@@ -2,19 +2,18 @@ import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useQuery } from '@tanstack/react-query';
 
 import './WarriorListPage.scss';
-import { warriorsService } from '../../services';
 import { WarriorInterface } from '../../interfaces';
 import { WarriorCard, WarriorFilter } from '../../components';
 import { Spinner } from '../../../shared/components';
 import { PageResponseInterface } from '../../../shared/interfaces';
+import { useGet } from '../../../shared/services';
+import { warriorsService } from '../../services';
 
 const PageContainer = styled.section`
   padding: 1.5rem;
 `;
-
 const CardsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,22 +36,15 @@ export default function WarriorListPage(): JSX.Element {
   const [filterWarriors, setFilterWarriors] = useState<WarriorInterface[]>([]);
   const [pageResponse, setPageResponse] = useState<PageResponseInterface<WarriorInterface>>();
   const [hasMorePages, setHasMorePages] = useState(true);
-  const { isLoading, data, refetch } = useQuery(['people'], () =>
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    getList(pageResponse?.next),
-  );
-
-  const getList = async (nextUrl?: string) => {
-    const response = await warriorsService.getPeople(nextUrl);
-    return response;
-  };
+  const [url, setUrl] = useState('people');
+  const { isLoading, data } = useGet<PageResponseInterface<WarriorInterface>>(url);
 
   const handleFilterWarriors = (warriors: WarriorInterface[]) => {
     setFilterWarriors(warriors);
   };
 
   const handleNextWarriors = () => {
-    if (pageResponse?.next) refetch();
+    if (pageResponse?.next) setUrl(pageResponse.next.replace('https://swapi.dev/api/', ''));
     else setHasMorePages(false);
   };
 
@@ -61,7 +53,7 @@ export default function WarriorListPage(): JSX.Element {
       setPageResponse(data);
       setFilterWarriors([
         ...filterWarriors,
-        ...data.results,
+        ...warriorsService.setIdByIndex(data.results),
       ]);
     }
   }, [data, isLoading]);
