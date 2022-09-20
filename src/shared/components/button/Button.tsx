@@ -15,7 +15,7 @@ const ButtonContainer = styled.button`
   text-decoration: none;
   min-width: 220px;
   z-index: 2;
-  border-color: ${props => props.theme.greyLight};
+  border-color: transparent;
   cursor: pointer;
 `;
 

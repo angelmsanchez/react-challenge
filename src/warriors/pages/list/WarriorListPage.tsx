@@ -37,7 +37,8 @@ export default function WarriorListPage(): JSX.Element {
   const [pageResponse, setPageResponse] = useState<PageResponseInterface<WarriorInterface>>();
   const [hasMorePages, setHasMorePages] = useState(true);
   const [url, setUrl] = useState('people');
-  const { isLoading, data } = useGet<PageResponseInterface<WarriorInterface>>(url);
+  const [isLoading, setIsLoading] = useState(true);
+  const { data } = useGet<PageResponseInterface<WarriorInterface>>(url);
 
   const handleFilterWarriors = (warriors: WarriorInterface[]) => {
     setFilterWarriors(warriors);
@@ -50,13 +51,14 @@ export default function WarriorListPage(): JSX.Element {
 
   useEffect(() => {
     if (data) {
+      setIsLoading(false);
       setPageResponse(data);
       setFilterWarriors([
         ...filterWarriors,
         ...warriorsService.setIdByIndex(data.results),
       ]);
     }
-  }, [data, isLoading]);
+  }, [data]);
 
   return (
     <PageContainer>

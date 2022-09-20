@@ -12,6 +12,7 @@ const WarriorContainer = styled.div`
   @media ${props => props.theme.screenMd} {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-end;
   }
 `;
 
@@ -88,15 +89,17 @@ export function WarriorFilter(props: Props): JSX.Element {
 
   return (
     <WarriorContainer>
-      <Button
-        handleClick={sortByName}
-        disabled={!originalWarriors}
-      >
-        <>
-          Sort by name
-          {isSortAsc ? ' Ascendant' : ' Descendant'}
-        </>
-      </Button>
+      <div>
+        <Button
+          handleClick={sortByName}
+          disabled={!originalWarriors}
+        >
+          <>
+            Sort by name
+            {isSortAsc ? ' Ascendant' : ' Descendant'}
+          </>
+        </Button>
+      </div>
       <SelectContainer role="select-role" className="warrior-filter__select">
         <label>Filter by hair color</label>
         <select value={hairColorSelected} onChange={changeSelect}>
