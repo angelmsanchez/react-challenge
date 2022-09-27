@@ -51,12 +51,14 @@ export default function WarriorListPage(): JSX.Element {
 
   useEffect(() => {
     if (data) {
-      setIsLoading(false);
-      setPageResponse(data);
-      setFilterWarriors([
-        ...filterWarriors,
-        ...warriorsService.setIdByIndex(data.results),
-      ]);
+      setTimeout(() => {
+        setIsLoading(false);
+        setPageResponse(data);
+        setFilterWarriors([
+          ...filterWarriors,
+          ...warriorsService.setIdByIndex(data.results),
+        ]);
+      }, 1000);
     }
   }, [data]);
 
