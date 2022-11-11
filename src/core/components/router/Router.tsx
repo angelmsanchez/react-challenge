@@ -11,8 +11,8 @@ export function Router(): JSX.Element {
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="/warriors" element={<WarriorIndexPage />} />
-        <Route path="/warriors/detail/:idWarrior" element={<WarriorDetailPage />} />
+        <Route path='/warriors' element={<WarriorIndexPage />} />
+        <Route path='/warriors/detail/:idWarrior' element={<WarriorDetailPage />} />
       </Routes>
     </Suspense>
   );

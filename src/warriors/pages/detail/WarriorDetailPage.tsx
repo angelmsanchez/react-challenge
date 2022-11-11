@@ -25,29 +25,42 @@ export default function WarriorDetailPage(): JSX.Element {
     }
   }, [data]);
 
-
   return (
     <PageContainer>
-      <Link to="/warriors">
+      <Link to='/warriors'>
         <Button>
-          <>
-            Go List Warriors
-          </>
+          <>Go List Warriors</>
         </Button>
       </Link>
       {warrior && (
         <DataContainer>
-          <p><span>Name:</span> {warrior.name}</p>
-          <p><span>Hair Color:</span> {warrior.hair_color}</p>
-          <p><span>Eye Color:</span> {warrior.eye_color}</p>
-          <p><span>Skin Color:</span> {warrior.skin_color}</p>
-          <p><span>Gender:</span> {warrior.gender}</p>
-          <p><span>Height:</span> {warrior.height}</p>
-          <p><span>Mass:</span> {warrior.mass}</p>
-          <p><span>Birth Year:</span> {warrior.birth_year}</p>
+          <p>
+            <span>Name:</span> {warrior.name}
+          </p>
+          <p>
+            <span>Hair Color:</span> {warrior.hair_color}
+          </p>
+          <p>
+            <span>Eye Color:</span> {warrior.eye_color}
+          </p>
+          <p>
+            <span>Skin Color:</span> {warrior.skin_color}
+          </p>
+          <p>
+            <span>Gender:</span> {warrior.gender}
+          </p>
+          <p>
+            <span>Height:</span> {warrior.height}
+          </p>
+          <p>
+            <span>Mass:</span> {warrior.mass}
+          </p>
+          <p>
+            <span>Birth Year:</span> {warrior.birth_year}
+          </p>
         </DataContainer>
       )}
-      {!warrior && (<Spinner />)}
+      {!warrior && <Spinner />}
     </PageContainer>
   );
 }

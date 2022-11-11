@@ -1,16 +1,11 @@
 import React from 'react';
+
 import { render, screen } from '@testing-library/react';
 
 import { WarriorFilter } from '../../filter/WarriorFilter';
 
 test('WarriorFilter: renders component and test the label`s buttons', () => {
-  render(
-    <WarriorFilter
-      handleSetDefault={() => { }}
-      handleSortByTitle={() => { }}
-      handleFilterColorHair={() => { }}
-    />,
-  );
+  render(<WarriorFilter handleSetDefault={() => {}} handleSortByTitle={() => {}} handleFilterColorHair={() => {}} />);
 
   const element = screen.getAllByRole('button', { hidden: true });
 
@@ -19,13 +14,7 @@ test('WarriorFilter: renders component and test the label`s buttons', () => {
 });
 
 test('WarriorFilter: renders component and test the select component', () => {
-  render(
-    <WarriorFilter
-      handleSetDefault={() => { }}
-      handleSortByTitle={() => { }}
-      handleFilterColorHair={() => { }}
-    />,
-  );
+  render(<WarriorFilter handleSetDefault={() => {}} handleSortByTitle={() => {}} handleFilterColorHair={() => {}} />);
 
   const select = screen.getByRole('select-role', { hidden: true });
 

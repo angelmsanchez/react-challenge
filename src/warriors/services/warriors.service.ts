@@ -2,7 +2,11 @@ import { WarriorInterface } from '../interfaces';
 
 class WarriorsService {
   setIdByIndex(Warriors: WarriorInterface[]): WarriorInterface[] {
-    return [...Warriors.map((Warrior, index) => { return { ...Warrior, id: index + 1 }; })];
+    return [
+      ...Warriors.map((Warrior, index) => {
+        return { ...Warrior, id: index + 1 };
+      }),
+    ];
   }
 }
 

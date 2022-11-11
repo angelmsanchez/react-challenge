@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 import { Router } from '../../router/Router';
-import { BrowserRouter } from 'react-router-dom';
 
 test('Router: renders component and test the class', () => {
   const text = 'Loading...';

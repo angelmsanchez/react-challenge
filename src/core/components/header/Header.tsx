@@ -28,11 +28,11 @@ const HeaderContainer = styled.header`
 
 export function Header(): JSX.Element {
   return (
-    <HeaderContainer role="header">
-      <Link to="/">
-        <img src={head} alt="Go to home" />
+    <HeaderContainer role='header'>
+      <Link to='/'>
+        <img src={head} alt='Go to home' />
       </Link>
-      <Link to="/warriors">Warriors Page</Link>
+      <Link to='/warriors'>Warriors Page</Link>
     </HeaderContainer>
   );
 }

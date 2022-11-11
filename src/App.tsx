@@ -25,7 +25,6 @@ const theme = {
 
 const queryClient = new QueryClient();
 
-
 function App() {
   const onRenderCallback = (
     id: string,
@@ -35,7 +34,7 @@ function App() {
     startTime: unknown,
     commitTime: unknown,
     interactions: unknown,
-  ) => { };
+  ) => {};
 
   useEffect(() => {
     InterceptorService();
@@ -43,7 +42,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Profiler id="profilerApp" onRender={onRenderCallback}>
+      <Profiler id='profilerApp' onRender={onRenderCallback}>
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Header />
@@ -52,7 +51,6 @@ function App() {
         </ThemeProvider>
       </Profiler>
     </QueryClientProvider>
-
   );
 }
 

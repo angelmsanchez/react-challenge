@@ -9,7 +9,7 @@ const WarriorContainer = styled.div`
   max-width: 1024px;
   margin: 0 auto;
 
-  @media ${props => props.theme.screenMd} {
+  @media ${(props) => props.theme.screenMd} {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -23,14 +23,14 @@ const SelectContainer = styled.div`
   width: 220px;
   letter-spacing: 2px;
 
-  @media ${props => props.theme.screenMd} {
+  @media ${(props) => props.theme.screenMd} {
     margin: 0 0 0 1.5rem;
   }
 
   select {
     appearance: none;
     background-color: transparent;
-    border-color: ${props => props.theme.main};
+    border-color: ${(props) => props.theme.main};
     border-width: 2px;
     border-radius: 6px;
     padding: 0.4rem;
@@ -43,7 +43,7 @@ const SelectContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  @media ${props => props.theme.screenMd} {
+  @media ${(props) => props.theme.screenMd} {
     margin-left: auto;
   }
 `;
@@ -57,21 +57,13 @@ interface Props {
 }
 
 export function WarriorFilter(props: Props): JSX.Element {
-  const {
-    originalWarriors,
-    filterWarriors,
-    handleSetDefault,
-    handleSortByTitle,
-    handleFilterColorHair,
-  } = props;
+  const { originalWarriors, filterWarriors, handleSetDefault, handleSortByTitle, handleFilterColorHair } = props;
 
   const [isSortAsc, setIsSortAsc] = useState(true);
   const [hairColorSelected, setHairColorSelected] = useState('');
 
   const sortableFunction = (Warriors: WarriorInterface[]): WarriorInterface[] => {
-    return Warriors.sort((a, b) => isSortAsc
-      ? a.name.localeCompare(b.name)
-      : b.name.localeCompare(a.name));
+    return Warriors.sort((a, b) => (isSortAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)));
   };
 
   const sortByName = (): void => {
@@ -90,28 +82,25 @@ export function WarriorFilter(props: Props): JSX.Element {
   return (
     <WarriorContainer>
       <div>
-        <Button
-          handleClick={sortByName}
-          disabled={!originalWarriors}
-        >
+        <Button handleClick={sortByName} disabled={!originalWarriors}>
           <>
             Sort by name
             {isSortAsc ? ' Ascendant' : ' Descendant'}
           </>
         </Button>
       </div>
-      <SelectContainer role="select-role" className="warrior-filter__select">
+      <SelectContainer role='select-role' className='warrior-filter__select'>
         <label>Filter by hair color</label>
         <select value={hairColorSelected} onChange={changeSelect}>
-          <option value=""> - </option>
-          <option value="auburn">Auburn</option>
-          <option value="blond">Blond</option>
-          <option value="brown">Brown</option>
-          <option value="grey">Grey</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="n/a">n/a</option>
-          <option value="none">None</option>
+          <option value=''> - </option>
+          <option value='auburn'>Auburn</option>
+          <option value='blond'>Blond</option>
+          <option value='brown'>Brown</option>
+          <option value='grey'>Grey</option>
+          <option value='black'>Black</option>
+          <option value='white'>White</option>
+          <option value='n/a'>n/a</option>
+          <option value='none'>None</option>
         </select>
       </SelectContainer>
       <ButtonContainer>
@@ -122,9 +111,7 @@ export function WarriorFilter(props: Props): JSX.Element {
             handleSetDefault();
           }}
         >
-          <>
-            Set Default
-          </>
+          <>Set Default</>
         </Button>
       </ButtonContainer>
     </WarriorContainer>

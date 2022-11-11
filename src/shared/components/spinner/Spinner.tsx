@@ -12,8 +12,8 @@ const SpinnerContainer = styled.div`
   animation: ${spin} 1s infinite linear;
   border: solid 2vmin transparent;
   border-radius: 50%;
-  border-right-color:  ${props => props.theme.main};
-  border-top-color:  ${props => props.theme.main};
+  border-right-color: ${(props) => props.theme.main};
+  border-top-color: ${(props) => props.theme.main};
   box-sizing: border-box;
   height: 20vmin;
   left: calc(50% - 10vmin);
@@ -29,7 +29,7 @@ const SpinnerContainer = styled.div`
     border-right-color: #3cf;
     border-top-color: #3cf;
     box-sizing: border-box;
-    content: "";
+    content: '';
     height: 16vmin;
     left: 0;
     position: absolute;
@@ -44,7 +44,7 @@ const SpinnerContainer = styled.div`
     border-right-color: #6ff;
     border-top-color: #6ff;
     box-sizing: border-box;
-    content: "";
+    content: '';
     height: 12vmin;
     left: 2vmin;
     position: absolute;
@@ -54,7 +54,5 @@ const SpinnerContainer = styled.div`
 `;
 
 export function Spinner(): JSX.Element {
-  return (
-    <SpinnerContainer />
-  );
+  return <SpinnerContainer />;
 }

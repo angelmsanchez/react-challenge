@@ -3,10 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonContainer = styled.button`
-  background-image: linear-gradient(135deg, ${props => props.theme.main}, ${props => props.theme.secondary});
+  background-image: linear-gradient(135deg, ${(props) => props.theme.main}, ${(props) => props.theme.secondary});
   border-radius: 6px;
   box-sizing: border-box;
-  color: ${props => props.theme.main};
+  color: ${(props) => props.theme.main};
   min-height: 50px;
   font-size: 1rem;
   font-weight: 600;
@@ -28,7 +28,7 @@ const SpanStyled = styled.span`
   transition: background 0.5s ease;
   min-width: 100%;
   background-color: #ffffff;
-  
+
   &:hover {
     background: transparent;
     color: #ffffff;
@@ -42,17 +42,11 @@ interface Props {
 }
 
 export function Button(props: Props): JSX.Element {
-  const {
-    children,
-    disabled = false,
-    handleClick,
-  } = props;
+  const { children, disabled = false, handleClick } = props;
 
   return (
     <ButtonContainer onClick={handleClick} disabled={disabled}>
-      <SpanStyled>
-        {children}
-      </SpanStyled>
+      <SpanStyled>{children}</SpanStyled>
     </ButtonContainer>
   );
 }

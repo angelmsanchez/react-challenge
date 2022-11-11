@@ -65,9 +65,15 @@ export function WarriorCard(props: Props): JSX.Element {
   return (
     <LinkCustom to={`/warriors/detail/${warrior.id}`}>
       <Title>{warrior.name}</Title>
-      <p><span>Hair Color:</span> {warrior.hair_color}</p>
-      <p><span>Gender:</span> {warrior.gender}</p>
-      <p><span>Height:</span> {warrior.height}</p>
+      <p>
+        <span>Hair Color:</span> {warrior.hair_color}
+      </p>
+      <p>
+        <span>Gender:</span> {warrior.gender}
+      </p>
+      <p>
+        <span>Height:</span> {warrior.height}
+      </p>
       <Container>Go To Detail</Container>
     </LinkCustom>
   );
